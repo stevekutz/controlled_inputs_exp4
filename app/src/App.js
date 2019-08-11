@@ -12,8 +12,8 @@ class App extends React.Component {
       valueArr: [],
    //   valArrObj: [{}], 
   
-          valObj: {id: 0, name : 'first', age: 100, real: true },
-          valArrObj: [{id: 0, name : 'first', age: 100, real: true }],
+    valObj: {id: 0, name : 'first', age: 100, real: true },
+    valArrObj: [{id: 0, name : 'first', age: 100, real: true }],
     }
   
   // handlers
@@ -25,28 +25,21 @@ class App extends React.Component {
   handleSubmit = ev => {
     ev.preventDefault();
 
+    // valArr
     this.setState(prevState => {
       return {
-        valueArr: [prevState.valueArr, this.state.valueInit],      
+        valueArr: [...prevState.valueArr, this.state.valueInit],      
 
       }
     })
 
-    /*
-    this.setState((prevState) => ({ 
-      stateStudents: [...prevState.stateStudents, newStudent] }));
-
-           let newObj = {...this.state.valArrObj};   // FIRST
-        console.log('newObj spread  >>  ', newObj);
-
-        newObj.name = this.state.valueInit;  // SECOND  
-
-    */
-
+    // valArrObj
    let newObj = {...this.state.valArrObj};   // FIRST
    console.log('newObj spread  >>  ', newObj);
 
    newObj.name = this.state.valueInit;  // SECOND    
+
+   console.log('newObj spread  >>  ', newObj);
 
    this.setState(prevState => {
     // This method mutates state directly
@@ -56,54 +49,11 @@ class App extends React.Component {
   })
 
 
-
-  /*
-
-*/
-
 // simply updates state in obj properly
    this.setState({
       valObj: {id: 0, name : 'NEWfirst', age: 100, real: true }
     })
 
-  //   let newObj = {id: 0, name : this.state.valueInit, age: 100, real: true };
-        
-
-        //let newObj = {name: this.state.valueInit, length: this.state.valArrObj.length};
-      
-        //newObj = {name: this.state.valueInit, length: this.state.valArrObj.length};
-
-       
-        // let newObj = {...this.state.valArrObj, name: this.state.valueInit, length: this.state.valArrObj.length};
-        
-   // console.log('newObj spread  >>  ', newObj);
-
-   //    !!!!!  THIS should append arr of obj
-   /* NOT quite 
-  this.setState(prevState => {
-    return {
-      valueObjArr: [prevState.valueObjArr, newObj],      
-        
-    }
-  })
-  */
-
-/*
-    this.setState({
-      // Spread in orin but then add seperate newObj keys  
-      // valArrObj: [...this.state.valArrObj, newObj]
-      
-      // should spread in orig, append, not quite  
-      // ...this.state.valArrObj, valArrObj: [...this.state.valArrObj, newObj]
-      
-      // REDUCER format
-      // ...state, friends: [...state.friends, action.payload]
-
-      // valArrObj: [...this.state.valArrObj, ...newObj] // ERROR, newObj not iterable
-
-      // valArrObj: [{...newObj}]  // just replaces first element 
-    })
-*/
     
     this.setState({ valueInit: ''})
   }
@@ -112,6 +62,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
+      <h4> Controlled Inputs</h4>
         <h4> value is: {this.state.valueInit}</h4>
         <form onSubmit = {this.handleSubmit}>
           <label> Label text
