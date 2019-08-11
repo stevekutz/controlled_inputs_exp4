@@ -25,35 +25,50 @@ class App extends React.Component {
   handleSubmit = ev => {
     ev.preventDefault();
 
-    // valArr
+    //########   valArr
     this.setState(prevState => {
       return {
         valueArr: [...prevState.valueArr, this.state.valueInit],      
 
       }
     })
+    /*
+      let addedTodo = {                        // FROM HERE
+        task: this.state.new_todo,
+        id: Date.now(),
+        completed: false
+        };
 
-    // valArrObj
-   let newObj = {...this.state.valArrObj};   // FIRST
+      await this.setState( prevState => {       // what does this do better?
+      return {
+         allTodos: [...prevState.allTodos, addedTodo],
+          new_todo: ''
+       }
+      })
+    */
+
+
+
+    // ####### valArrObj
+   let newObj = {id: 0, name : this.state.valueInit, age: 100, real: true };   // FIRST
    console.log('newObj spread  >>  ', newObj);
-
+      /*
    newObj.name = this.state.valueInit;  // SECOND    
 
    console.log('newObj spread  >>  ', newObj);
-
+      */
    this.setState(prevState => {
-    // This method mutates state directly
     return {
-      valueArrObj: [{...prevState.valArrObj.name}],
+      valueArrObj: [...prevState.valArrObj, newObj],
     }  
   })
 
-
+/*
 // simply updates state in obj properly
    this.setState({
       valObj: {id: 0, name : 'NEWfirst', age: 100, real: true }
     })
-
+*/
     
     this.setState({ valueInit: ''})
   }
