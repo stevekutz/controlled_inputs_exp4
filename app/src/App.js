@@ -22,11 +22,11 @@ class App extends React.Component {
   //  console.log(' current obj length >> ', this.state.valArrObj.length );
   }  
 
-  handleSubmit = ev => {
+  handleSubmit = async ev => {
     ev.preventDefault();
 
     //########   valArr
-    this.setState(prevState => {
+    await this.setState(prevState => {
       return {
         valueArr: [...prevState.valueArr, this.state.valueInit],      
 
@@ -57,9 +57,9 @@ class App extends React.Component {
 
    console.log('newObj spread  >>  ', newObj);
       */
-   this.setState(prevState => {
+   await this.setState(prevState => {
     return {
-      valueArrObj: [...prevState.valArrObj, newObj],
+      valArrObj: [...prevState.valArrObj, newObj], // NOT valueArrObj:
     }  
   })
 
