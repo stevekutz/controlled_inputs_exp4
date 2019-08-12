@@ -32,44 +32,19 @@ class App extends React.Component {
 
       }
     })
-    /*
-      let addedTodo = {                        // FROM HERE
-        task: this.state.new_todo,
-        id: Date.now(),
-        completed: false
-        };
-
-      await this.setState( prevState => {       // what does this do better?
-      return {
-         allTodos: [...prevState.allTodos, addedTodo],
-          new_todo: ''
-       }
-      })
-    */
-
-
 
     // ####### valArrObj
-   let newObj = {id: 0, name : this.state.valueInit, age: 100, real: true };   // FIRST
-   console.log('newObj spread  >>  ', newObj);
-      /*
-   newObj.name = this.state.valueInit;  // SECOND    
+    let curLen = this.state.valArrObj.length;
 
-   console.log('newObj spread  >>  ', newObj);
-      */
+   let newObj = {id: 0, name : this.state.valueInit, age: 100, real: true, currentLength: curLen};   // FIRST
+
    await this.setState(prevState => {
     return {
       valArrObj: [...prevState.valArrObj, newObj], // NOT valueArrObj:
     }  
   })
-
-/*
-// simply updates state in obj properly
-   this.setState({
-      valObj: {id: 0, name : 'NEWfirst', age: 100, real: true }
-    })
-*/
     
+  // Reset input field
     this.setState({ valueInit: ''})
   }
 
@@ -95,7 +70,7 @@ class App extends React.Component {
 
         <div className = 'valueArrContainer' >
           <h4> valueArr: {this.state.valueArr}</h4> 
-          <h5> valObj: {this.state.valObj.name}</h5>
+          <h5> ddvalObj: {this.state.valObj.name}</h5>
           <ul>
             {this.state.valueArr.map( (item,index) => (
               <div key = {index}>
@@ -114,7 +89,7 @@ class App extends React.Component {
                      key = {index } 
                      index = {index} 
                      itemObj = {itemObj} 
-                     objLength = {this.state.valArrObj.length}
+                //     objLength = {this.state.valArrObj.length}
                      />
                 ))}
         </div>
