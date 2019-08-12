@@ -22,11 +22,12 @@ class App extends React.Component {
   //  console.log(' current obj length >> ', this.state.valArrObj.length );
   }  
 
-  handleSubmit = async ev => {
+  // handleSubmit = async ev => {
+  handleSubmit = ev => {
     ev.preventDefault();
 
     //########   valArr
-    await this.setState(prevState => {
+      this.setState(prevState => {
       return {
         valueArr: [...prevState.valueArr, this.state.valueInit],      
 
@@ -34,13 +35,19 @@ class App extends React.Component {
     })
 
     // ####### valArrObj
-    let curLen = this.state.valArrObj.length;
+   let curLen = this.state.valArrObj.length;
 
-   let newObj = {id: 0, name : this.state.valueInit, age: 100, real: true, currentLength: curLen};   // FIRST
+   let newObj = {
+      id: 0, 
+      name : this.state.valueInit, 
+      age: 100, 
+      real: true, 
+      currentLength: curLen
+    };
 
-   await this.setState(prevState => {
+    this.setState(prevState => {
     return {
-      valArrObj: [...prevState.valArrObj, newObj], // NOT valueArrObj:
+      valArrObj: [...prevState.valArrObj, newObj],
     }  
   })
     
